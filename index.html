@@ -17,7 +17,7 @@
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
       </div>
       
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" id="sub">Submit</button>
     </form>
 
 
@@ -148,7 +148,7 @@
           appendPre('Error: ' + response.result.error.message);
         });
       }
-
+      document.getElementById("sub").addEventListener(onclick, batchUpdate);
       function batchUpdate(153NpkiK2z06ai_R0p68ogEjbjTN71aRlnkhNjcmk27w, EMAIL, find, replacement, callback) {
   // [START sheets_batch_update]
   var requests = [];
@@ -171,6 +171,10 @@
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
+
+
+
+      document.getElementById("sub").addEventListener(onclick, batchUpdate);
     </script>
   </body>
 </html>
