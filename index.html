@@ -121,9 +121,29 @@
       }
 
 
+      gapi.client.sheets.spreadsheets.values.get({
+  spreadsheetId:'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+  range: 
+}).then((response) => {
+  var result = response.result;
+  var numRows = result.values ? result.values.length : 0;
+  console.log(`${numRows} rows retrieved.`);
+});
 
-
-
+function create(title, callback) {
+  // [START sheets_create]
+  gapi.client.sheets.spreadsheets.create({
+    properties: {
+      title: title
+    }
+  }).then((response) => {
+    // [START_EXCLUDE silent]
+    callback(response);
+    console.log('Spreadsheet ID: ' + response.result.spreadsheetId);
+    // [END_EXCLUDE]
+  });
+  // [END sheets_create]
+}
       /**
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
@@ -148,8 +168,8 @@
           appendPre('Error: ' + response.result.error.message);
         });
       }
-      document.getElementById("sub").addEventListener(onclick, batchUpdate);sssss
-      function batchUpdate("153NpkiK2z06ai_R0p68ogEjbjTN71aRlnkhNjcmk27w", EMAIL, find, replacement, callback) {
+      document.getElementById("sub").addEventListener(onclick, batchUpdate);
+      function batchUpdate('153NpkiK2z06ai_R0p68ogEjbjTN71aRlnkhNjcmk27w', EMAIL, find, replacement, callback) {
   // [START sheets_batch_update]
   var requests = [];
   // Change the spreadsheet's title.
